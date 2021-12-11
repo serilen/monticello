@@ -1,0 +1,476 @@
+//mixins
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+	content: $content;
+	display: $display;
+	position: $pos;
+}
+@mixin push--auto {
+	margin: {
+		left: auto;
+		right: auto;
+	}
+}
+
+//variable
+$bg-color: #ffffff;
+$color-text-base: #2c4058;
+
+*, *:after, *:before {
+	box-sizing: border-box;
+	margin: 0;
+	transition: all .1s ease-in;
+}
+
+html, body{
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	color: $color-text-base;
+	line-height: 1.6;
+	height: 100%;	
+	max-height: 100vh;
+}
+
+ul {
+	padding-left: 0;
+	list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	margin: 0;
+}
+
+a, button, input {
+	outline: none;
+	box-shadow: 0 0 0 2px transparent;
+	border: none;
+}
+
+a {
+	background-color: transparent;
+	text-decoration-color: transparent;
+	color: inherit;
+}
+
+.img-responsive {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+.container {
+	max-width: 1200px;
+	@include push--auto;
+	padding: 0 15px;
+}
+
+.sr-only {
+	position: absolute;
+	margin: -1px 0 0 -1px;
+	padding: 0;
+	display: block;
+	width: 1px;
+	height: 1px;
+	font-size: 1px;
+	line-height: 1px;
+	overflow: hidden;
+	clip: rect(0,0,0,0);
+	border: 0;
+	outline: 0;
+}
+
+.btn {
+	display: inline-flex;
+	justify-content: center;
+	font-family: 'Aleo', serif;
+	font-weight: 400;
+	color: $color-text-base;
+	text-align: center;
+	vertical-align: middle;
+	user-select: none;
+	background-color: #ffffff;
+	padding: .75rem 1rem;
+	font-size: .875rem;
+	line-height: 1.5;
+	align-items: center;
+	border: 1px solid #000000;
+	transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	min-width: 144px;
+
+	&:focus {
+		border-color: #000000;
+	}
+
+	&:hover,
+	&:active {
+		color: #5474fd;
+		background-color: #ffffff;
+		cursor: pointer;
+	}			
+
+	&:active {
+		border-color: #5474fd;
+	}
+}
+
+.title {
+	text-transform: uppercase;
+	line-height: 1;
+}
+
+.header {
+	color: $bg-color;
+	background: linear-gradient( 45deg, rgb(85,183,255) 0%, rgb(126,90,255) 100%);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 800px;
+	position: relative;
+	text-align: center;
+}
+
+.nav {
+	position: relative;
+	left: 0;
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	
+	&__item {
+		padding: 17px 0;
+	}
+}
+.logo {
+	display: block;
+	
+	&__link {
+		display: block;
+		border: 2px solid transparent;
+
+		&:focus {
+			border-color: #000000;
+		}
+
+		&:hover,
+		&:active {
+			transform: scale(1.1);
+		}
+
+		&:active {
+			transform: translateY(-3px);
+			transition: 0.3s;
+		}
+	}
+}
+
+.main-menu {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	text-transform: uppercase;
+	font-size: 14px;
+	text-align: center;
+	font-family: 'Aleo', serif;
+	margin-right: -21px;
+
+	&__item {
+		
+	}
+
+	&__link {
+		padding: 14px 21px;
+		display: block;
+		position: relative;
+		text-decoration: none;
+		color: inherit;
+		border: 2px solid transparent;
+
+		&:focus {
+			border-color: #000000;
+		}
+
+		&:hover,
+		&:active {
+			color:  #d82323;
+		}
+
+		&:active {
+			transform: translateY(-1px);
+			transition: 0.3s;
+		}
+	}
+}
+
+.social-list {
+	display: inline-flex;
+	width: auto;
+	&__item {
+		margin-right: 15px;
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+	&__link {
+		display: block;
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+		vertical-align: middle;
+		border-radius: 50%;
+		border: solid 1px rgba(255, 255, 255,0.4);
+
+		&:focus{
+			border-color: $bg-color;
+			color: #ec173f;
+		}
+		&:hover {
+			color: #ec173f;
+		}
+		&:active {
+			transform: scale(1.3);
+		}
+	}
+}
+
+.scroll {
+	display: block;
+	@include push--auto;
+	position: absolute;
+	content: "";
+	width: 40px;
+	height: 40px;
+	border: 1px solid $bg-color;
+	border-radius: 50%;
+	bottom: 50px;
+	left: 50%;
+
+	&:before {
+		transform: translateX(-100%) rotate(135deg) translateY(-100%);
+		left: 49%;
+		top: 30%;
+		content: "";
+		display: block;
+		position: absolute;
+		width: 6px;
+		height: 6px;
+		border-top: 1px solid $bg-color;
+		border-right: 1px solid $bg-color;
+		bottom: 0;
+	}
+
+	&:focus {
+		border-color: #000;
+	}
+
+	&:hover {
+		transform: scale(1.2);
+	}
+
+	&:active {
+		transform: translateY(-3px);
+		transition: 0.3s;
+	}
+}
+/* основные классы
+//Слайдер
+.slick-slider{}
+// Слайдер запущен
+.slick-slider.slick-initialized{}
+// Слайдер с точками
+.slick-slider.slick-dotted{}
+// Ограничивающая оболочка
+.slick-list {}
+// Лента слайдов
+.slick-track{}
+// Слайд
+.slick-slide{}
+Слайд активный (показывается)
+.slick-slide.slick-active{}
+// Слайд основной
+.slick-slide.slick-current{}
+// Слайд по центру
+.slick-slide.slick-center{}
+// Клонированный слайд
+.slick-slide.slick-cloned{}
+// Стрелка
+.slick-arrow{}
+// Стрелка влево
+.slick-arrow.slick-prev{}
+// Стрелка вправо 
+.slick-arrow.slick-next{}
+// Стрелка не активная
+.slick-arrow.slick-disabled{}
+// Точки (булиты)
+.slick-dots{}
+.slick-dots li{}
+// Активная точка
+.slick-dots li.slick-active{}
+// Элемент точки 
+.slick-dots li button{} */
+
+.slick-list {
+	overflow: hidden;
+	margin-left: 100px;
+}
+// Лента слайдов
+.slick-track{
+	display: flex;
+	align-items: start;
+}
+
+
+.slider {
+	min-width: 0;
+	position: relative;
+
+	
+	& .slick-dotted {
+		position: absolute;
+		top: 50%;
+		font-size: 0;
+		z-index: 100;
+		width: 10px;
+		height: 10px;
+		border: none;
+	}
+
+	&__title {
+		font-size: 80px;
+		margin-bottom: 30px;
+		width: 100%;
+	}
+	&__subtitle {
+		font-size: 18px;
+		letter-spacing: 5px;
+	}
+}
+
+.slick-dots{
+	position: absolute;
+	right: 5%;
+	top: 50%;
+	font-size: 0;
+	z-index: 100;
+	
+}
+.slick-dots li{
+	margin-bottom: 40px;	
+	width: 10px;
+	height: 10px;
+	border: 	solid 1px #ffffff;
+	border-radius: 50%;
+}
+// Активная точка
+.slick-dots li.slick-active{
+	background-color: #fff;
+}
+// Элемент точки 
+.slick-dots li button{
+	height: 100%;
+	background-color: transparent;
+} 
+
+.sliderbig {
+	margin-bottom: 20px;
+	&__item {
+		text-align: center;
+		transform: scale(1.2);
+	}
+}
+
+.link__add {
+	cursor: pointer;
+	color: #000;
+}
+.link__remove {
+	color: #000;
+	cursor: pointer;
+}
+.link__filter {
+	color: #000;
+	cursor: pointer;
+}
+
+figcaption {
+	position: absolute;
+	top: 50%;
+	left: 5%;
+}
+
+.section-projects {
+	position: relative;
+	padding-top: 135px;
+	color: #2c4058;
+	min-height: 1630px;
+
+	&__title {
+		margin-bottom: 100px;
+		text-align: center;
+		font-size: 44px;
+	}
+}
+
+.project {
+	&__item {
+		margin-bottom: 140px;
+	}
+	&__img {
+		position: relative;
+		&:before {
+			content: "";
+			width: 585px;
+			height: 470px;
+			position: absolute;
+			left: -50%;
+			top: -25%;
+			background-color: #55b7ff;
+		}
+		&__project-descr {}
+	}
+}
+
+.project-descr {
+	font-size: 18px;
+	padding-top: 120px;
+
+	&__subtitle {
+		font-size: 22px;
+		margin-bottom: 5px;
+	}
+	&__title {
+		font-size: 44px;
+		margin-bottom: 34px;
+	}
+	&__lead {
+		height: 85px;
+		overflow: hidden;
+		margin-bottom: 34px;
+	}
+	&__btn {
+		margin-bottom: 54px;
+	}
+	&__location {
+		position: relative;
+		margin-left: 20px;
+		
+		&:before {
+			position: absolute;
+			left: -20px;
+			top: 5px;
+			content: '';
+			width: 11px;
+			height: 16px;
+			background-image: url('../image/location.png');
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+	}
+}
+
